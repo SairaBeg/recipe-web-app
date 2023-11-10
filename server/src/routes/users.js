@@ -3,7 +3,6 @@ import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 import { UserModel } from "../models/Users.js";
 import dotenv from "dotenv";
-import path from "path";
 
 dotenv.config({ path: "./.env" });
 
@@ -33,7 +32,7 @@ router.post("/login", async (req, res) => {
   if (!isPwValid) {
     return res.json({ message: "Username or Password is incorrect." });
   }
-  console.log(process.env.JWT_SECRET);
+
   const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
   res.json({ token, userID: user._id });
 });
