@@ -1,4 +1,5 @@
 import { useState } from "react";
+import axios from "axios";
 
 export const CreateRecipe = () => {
   const [recipe, setRecipe] = useState({
@@ -9,7 +10,12 @@ export const CreateRecipe = () => {
     cookingTime: 0,
     userOwner: 0,
   });
-  const handleChange = (event, idx) => {
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setRecipe({ ...recipe, [name]: value });
+  };
+  const handleIngredientChange = (event, idx) => {
     const { value } = event.target;
     const ingredients = recipe.ingredients;
     ingredients[idx] = value;
@@ -18,14 +24,18 @@ export const CreateRecipe = () => {
   const addIngredient = () => {
     setRecipe({ ...recipe, ingredients: [...recipe.ingredients, ""] });
   };
-  const handleIngredientChange = (event) => {
-    const { name, value } = event.target;
-    setRecipe({ ...recipe, [name]: value });
+  const onSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      await axios.post();
+    } catch (e) {
+      console.error(e);
+    }
   };
   return (
     <div className="create-recipe">
       <h2>Create Recipe</h2>
-      <form>
+      <form onSubmit={onSubmit}>
         <label htmlFor="name">Name</label>
         <input type="text" name="name" id="name" onChange={handleChange} />
         <label htmlFor="description">Description</label>
@@ -40,7 +50,9 @@ export const CreateRecipe = () => {
             onChange={(event) => handleIngredientChange(event, idx)}
           />
         ))}
-        <button onClick={addIngredient}>Add Ingredient</button>
+        <button type="button" onClick={addIngredient}>
+          Add Ingredient
+        </button>
 
         <label htmlFor="instructions">Instructions</label>
         <textarea type="text" name="instructions" id="instructions" />
@@ -48,6 +60,7 @@ export const CreateRecipe = () => {
         <input type="text" name="imageUrl" id="imageUrl" />
         <label htmlFor="cookingTime">Cooking Time</label>
         <input type="number" name="cookingTime" id="cookingTime" />
+        <button type="submit">Create Recipe</button>
       </form>
     </div>
   );
