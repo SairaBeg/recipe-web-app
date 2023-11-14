@@ -1,8 +1,9 @@
 import { useState } from "react";
 import axios from "axios";
 import { useGetUserID } from "../hooks/useGetUserID";
-
+import { useNavigate } from "react-router-dom";
 export const CreateRecipe = () => {
+  const navigate = useNavigate();
   const userID = useGetUserID();
   const [recipe, setRecipe] = useState({
     name: "",
@@ -34,7 +35,7 @@ export const CreateRecipe = () => {
         recipe
       );
       alert("Recipe Created!");
-      console.log(response);
+      navigate("/");
     } catch (e) {
       console.error("Error submitting recipe:", e);
       alert("Error creating recipe. Please check the console for details.");
