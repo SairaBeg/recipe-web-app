@@ -22,10 +22,10 @@ export const Home = () => {
     const fetchSavedRecipe = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:3001/recipes/savedRecipes/ids"
+          `http://localhost:3001/recipes/savedRecipes/ids/${userID}`
         );
 
-        setSavedRecipes(response.data);
+        setSavedRecipes(response.data.savedRecipes);
       } catch (e) {
         console.error(e);
       }
@@ -41,11 +41,13 @@ export const Home = () => {
         recipeID,
         userID,
       });
-      console.log(response.data);
+      setSavedRecipes(response.data.savedRecipes);
     } catch (e) {
       console.error(e);
     }
   };
+  const isRecipeSaved = (id) => savedRecipes?.includes(id);
+
   return (
     <div>
       <h2>Recipes</h2>
@@ -54,8 +56,11 @@ export const Home = () => {
           <li key={recipe._id}>
             <div>
               <h2>{recipe.name}</h2>
-              <button onClick={() => saveRecipe(recipe._id)}>
-                Save Recipe
+              <button
+                onClick={() => saveRecipe(recipe._id)}
+                disabled={isRecipeSaved(recipe._id)}
+              >
+                {isRecipeSaved(recipe._id) ? "Saved" : "Save Recipe"}
               </button>
             </div>
             <div className="instructions">
