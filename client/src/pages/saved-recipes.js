@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useGetUserID } from "../hooks/useGetUserID";
 
-export const setSavedRecipes = () => {
+export const SavedRecipes = () => {
   const [savedRecipes, setSavedRecipes] = useState([]);
 
   const userID = useGetUserID();
