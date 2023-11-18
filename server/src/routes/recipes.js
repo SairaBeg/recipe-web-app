@@ -4,7 +4,7 @@ import mongoose from "mongoose";
 import express from "express";
 
 const router = express.Router();
-
+//Get Recipes
 router.get("/", async (req, res) => {
   try {
     const response = await RecipeModel.find({});
@@ -13,7 +13,7 @@ router.get("/", async (req, res) => {
     res.json(e);
   }
 });
-
+//Create Recipe
 router.post("/", async (req, res) => {
   const recipe = new RecipeModel(req.body);
   try {
@@ -37,7 +37,7 @@ router.put("/", async (req, res) => {
     res.json(e);
   }
 });
-
+//Get ID of Saved Recipes
 router.get("/savedRecipes/ids/:userID", async (req, res) => {
   try {
     const user = await UserModel.findById(req.params.userID);
@@ -46,7 +46,7 @@ router.get("/savedRecipes/ids/:userID", async (req, res) => {
     res.json(e);
   }
 });
-
+//Get a user's Saved Recipes
 router.get("/savedRecipes/:userID", async (req, res) => {
   try {
     const user = await UserModel.findById(req.params.userID);
