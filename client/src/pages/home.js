@@ -34,7 +34,7 @@ export const Home = () => {
     };
 
     fetchRecipe();
-    fetchSavedRecipe();
+    if (cookies.access_token) fetchSavedRecipe();
   }, []);
 
   const saveRecipe = async (recipeID) => {
