@@ -38,6 +38,24 @@ router.put("/", verifyToken, async (req, res) => {
     res.json(e);
   }
 });
+//Delete Save a recipe
+router.delete("/", async (req, res) => {
+  try {
+    const recipe = await RecipeModel.findById(req.body.recipeID);
+    const user = await UserModel.findById(req.body.userID);
+
+    user.savedRecipes.pull(recipe._id);
+    await user.save();
+
+    // Include updated savedRecipes in response
+    const savedRecipes = await RecipeModel.find({
+      _id: { $in: user.savedRecipes },
+    });
+    res.json({ savedRecipes });
+  } catch (e) {
+    res.json(e);
+  }
+});
 //Get ID of Saved Recipes
 router.get("/savedRecipes/ids/:userID", async (req, res) => {
   try {
