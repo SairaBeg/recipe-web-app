@@ -39,7 +39,7 @@ router.put("/", verifyToken, async (req, res) => {
   }
 });
 //Delete Save a recipe
-router.delete("/", async (req, res) => {
+router.delete("/", verifyToken, async (req, res) => {
   try {
     const recipe = await RecipeModel.findById(req.body.recipeID);
     const user = await UserModel.findById(req.body.userID);

@@ -58,14 +58,13 @@ export const Home = () => {
   //Remove Saved Recipe Call
   const unSaveRecipe = async (recipeID) => {
     try {
-      await axios.delete(
-        "http://localhost:3001/recipes",
-        {
+      await axios.delete("http://localhost:3001/recipes", {
+        data: {
           recipeID,
           userID,
         },
-        { headers: { authorization: cookies.access_token } }
-      );
+        headers: { authorization: cookies.access_token },
+      });
 
       // Update savedRecipes state manually
       setSavedRecipes(savedRecipes.filter((id) => id !== recipeID));
