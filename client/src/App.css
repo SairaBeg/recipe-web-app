@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 .App {
   display: flex;
   flex-direction: column;
@@ -60,13 +64,6 @@ input {
   align-items: center;
   color: white;
   text-decoration: none;
-}
-
-a {
-  color: white;
-  text-decoration: none;
-  margin: 10px;
-  font-size: 25px;
 }
 
 .create-recipe {
