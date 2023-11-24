@@ -74,38 +74,46 @@ export const Home = () => {
   };
   return (
     <div>
-      <h2>Recipes</h2>
-      <ul>
-        {recipes.map((recipe) => (
-          <li key={recipe._id}>
-            <div>
-              <h2>{recipe.name}</h2>
-              {/* <button
+      <h2 className="all-recipes-title">Recipes</h2>
+      <div className="cardfeed">
+        <ul>
+          {recipes.map((recipe) => (
+            <li className="recipe-card" key={recipe._id}>
+              <div className="title-button">
+                <h2 className="card-title">{recipe.name}</h2>
+                {/* <button
                 onClick={() => saveRecipe(recipe._id)}
                 disabled={isRecipeSaved(recipe._id)}
               >
                 {isRecipeSaved(recipe._id) ? "Saved" : "Save Recipe"}
               </button> */}
-              <button
-                onClick={() => {
-                  if (isRecipeSaved(recipe._id)) {
-                    unSaveRecipe(recipe._id);
-                  } else {
-                    saveRecipe(recipe._id);
-                  }
-                }}
-              >
-                {isRecipeSaved(recipe._id) ? "Unsave Recipe" : "Save Recipe"}
-              </button>
-            </div>
-            <div className="instructions">
-              <p>{recipe.instructions}</p>
-              <img src={recipe.imageUrl} alt={recipe.name} />
+                <button
+                  id="save-button"
+                  className="btn"
+                  onClick={() => {
+                    if (isRecipeSaved(recipe._id)) {
+                      unSaveRecipe(recipe._id);
+                    } else {
+                      saveRecipe(recipe._id);
+                    }
+                  }}
+                >
+                  {isRecipeSaved(recipe._id) ? "Unsave Recipe" : "Save Recipe"}
+                </button>
+              </div>
+              <div className="instructions-div">
+                <p className="instructions">{recipe.instructions}</p>
+              </div>
+              <img
+                className="card-image"
+                src={recipe.imageUrl}
+                alt={recipe.name}
+              />
               <p>Cooking Time: {recipe.cookingTime} (minutes)</p>
-            </div>
-          </li>
-        ))}
-      </ul>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 };

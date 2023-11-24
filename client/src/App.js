@@ -1,11 +1,11 @@
-import "./App.css";
+import "./styles/App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Home } from "./pages/home";
 import { Auth } from "./pages/auth";
 import { CreateRecipe } from "./pages/create-recipes";
 import { SavedRecipes } from "./pages/saved-recipes";
 import { Navbar } from "./components/Navbar";
-import "tailwindcss/tailwind.css";
+// import "tailwindcss/tailwind.css";
 
 function App() {
   return (
