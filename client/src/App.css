@@ -16,6 +16,12 @@ body {
   padding: 0;
 }
 
+a {
+  color: white;
+  text-decoration: none;
+  margin: 10px;
+  font-size: 25px;
+}
 .auth {
   display: flex;
   justify-content: center;

@@ -6,8 +6,8 @@ import { useCookies } from "react-cookie";
 export const Home = () => {
   const [recipes, setRecipes] = useState([]);
   const [savedRecipes, setSavedRecipes] = useState([]);
-  const [unsavedRecipes, setUnsavedRecipes] = useState([]);
-  const [cookies, _] = useCookies(["access_token"]);
+
+  const [cookies] = useCookies(["access_token"]);
 
   const userID = useGetUserID();
 
@@ -36,7 +36,7 @@ export const Home = () => {
 
     fetchRecipe();
     if (cookies.access_token) fetchSavedRecipe();
-  }, []);
+  }, [userID, cookies.access_token]);
   //Save Recipe call
   const saveRecipe = async (recipeID) => {
     try {

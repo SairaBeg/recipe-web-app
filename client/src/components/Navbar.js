@@ -13,9 +13,7 @@ export const Navbar = () => {
   };
   return (
     <div className="navbar ">
-      <Link className="underline decoration-sky-500" to={"/"}>
-        Home
-      </Link>
+      <Link to={"/"}>Home</Link>
       <Link to={"/create-recipe"}>Create Recipe</Link>
 
       {!cookies.access_token ? (
