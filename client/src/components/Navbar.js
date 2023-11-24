@@ -21,12 +21,7 @@ export const Navbar = () => {
       ) : (
         <>
           <Link to={"/saved-recipes"}>Saved Recipes</Link>
-          <button
-            className="bg-[#a6c1ee] text-white rounded-full"
-            onClick={logout}
-          >
-            Logout
-          </button>
+          <button onClick={logout}>Logout</button>
         </>
       )}
     </div>
