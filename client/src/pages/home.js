@@ -7,7 +7,7 @@ export const Home = () => {
   const [recipes, setRecipes] = useState([]);
   const [savedRecipes, setSavedRecipes] = useState([]);
 
-  const [cookies] = useCookies(["access_token"]);
+  const [_, cookies] = useCookies(["access_token"]);
 
   const userID = useGetUserID();
 
@@ -74,7 +74,10 @@ export const Home = () => {
   };
   return (
     <div>
-      <h2 className="all-recipes-title">Recipes</h2>
+      <div className="all-recipes-title">
+        <h2 className="all-recipes-title-h2">Recipes</h2>
+      </div>
+
       <div className="cardfeed">
         <ul>
           {recipes.map((recipe) => (
