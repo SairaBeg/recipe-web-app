@@ -100,7 +100,7 @@ p {
   flex-direction: column;
   margin-bottom: 20px;
 }
-
+/* Navbar */
 .navbar {
   margin: 0;
   width: 100%;
@@ -114,6 +114,22 @@ p {
   color: white;
   text-decoration: none;
 }
+.navbar-link:hover {
+  padding: 8px;
+  border-radius: 10px;
+  border: white solid 2px;
+}
+.active {
+  padding: 8px;
+
+  background-color: var(--ltGreen);
+  border-radius: 10px;
+  border: white solid 3px;
+}
+#logout-button {
+  font-size: 25px;
+}
+
 /*Homepage*/
 .all-recipes-title {
   font-size: xx-large;
@@ -137,7 +153,7 @@ p {
   padding-bottom: 10px;
   background-color: var(--dkOrange);
   border-radius: 15px;
-  border: white solid 4px;
+  border: white solid 2px;
 }
 .cardfeed {
   display: flex;
@@ -175,6 +191,7 @@ p {
   border-radius: 7px;
   border: white solid 1px;
   box-shadow: 3px 3px rgb(85, 84, 84);
+  transition-duration: 0.2s;
 }
 #save-button:hover {
   background-color: #606c38;

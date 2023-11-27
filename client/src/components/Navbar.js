@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import "tailwindcss/tailwind.css";
 
 export const Navbar = () => {
@@ -13,15 +14,33 @@ export const Navbar = () => {
   };
   return (
     <div className="navbar">
-      <Link to={"/"}>Home</Link>
-      <Link to={"/create-recipe"}>Create Recipe</Link>
+      <NavLink activeClassName="active" className="navbar-link" to={"/"}>
+        Home
+      </NavLink>
+      <NavLink
+        activeClassName="active"
+        className="navbar-link"
+        to={"/create-recipe"}
+      >
+        Create Recipe
+      </NavLink>
 
       {!cookies.access_token ? (
-        <Link to={"/auth"}>Login/Register</Link>
+        <NavLink activeClassName="active" className="navbar-link" to={"/auth"}>
+          Login/Register
+        </NavLink>
       ) : (
         <>
-          <Link to={"/saved-recipes"}>Saved Recipes</Link>
-          <button onClick={logout}>Logout</button>
+          <NavLink
+            activeClassName="active"
+            className="navbar-link"
+            to={"/saved-recipes"}
+          >
+            Saved Recipes
+          </NavLink>
+          <button className="navbar-link" id="logout-button" onClick={logout}>
+            Logout
+          </button>
         </>
       )}
     </div>
