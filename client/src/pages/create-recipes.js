@@ -44,65 +44,67 @@ export const CreateRecipe = () => {
     }
   };
   return (
-    <div className="create-recipe">
-      <h2>Create Recipe</h2>
-      <form onSubmit={onSubmit}>
-        <label htmlFor="name">Name</label>
-        <input
-          type="text"
-          name="name"
-          id="name"
-          value={recipe.name}
-          onChange={handleChange}
-        />
-        <label htmlFor="description">Description</label>
-        <textarea
-          value={recipe.description}
-          name="description"
-          id="description"
-          onChange={handleChange}
-        />
-        <label htmlFor="ingredients">Ingredients</label>
-        {recipe.ingredients.map((ingredient, index) => (
+    <div id="create-recipe-container">
+      <div className="create-recipe-card">
+        <h2 id="create-recipe-title">Create Recipe</h2>
+        <form onSubmit={onSubmit}>
+          <label htmlFor="name">Name</label>
           <input
-            key={index}
             type="text"
-            name="ingredients"
-            id="ingredients"
-            value={ingredient}
-            onChange={(event) => handleIngredientChange(event, index)}
+            name="name"
+            id="name"
+            value={recipe.name}
+            onChange={handleChange}
           />
-        ))}
-        <button type="button" onClick={addIngredient}>
-          Add Ingredient
-        </button>
+          <label htmlFor="description">Description</label>
+          <textarea
+            value={recipe.description}
+            name="description"
+            id="description"
+            onChange={handleChange}
+          />
+          <label htmlFor="ingredients">Ingredients</label>
+          {recipe.ingredients.map((ingredient, index) => (
+            <input
+              key={index}
+              type="text"
+              name="ingredients"
+              id="ingredients"
+              value={ingredient}
+              onChange={(event) => handleIngredientChange(event, index)}
+            />
+          ))}
+          <button type="button" onClick={addIngredient}>
+            Add Ingredient
+          </button>
 
-        <label htmlFor="instructions">Instructions</label>
-        <textarea
-          value={recipe.instructions}
-          onChange={handleChange}
-          type="text"
-          name="instructions"
-          id="instructions"
-        />
-        <label htmlFor="imageUrl">ImageURL</label>
-        <input
-          value={recipe.imageUrl}
-          onChange={handleChange}
-          type="text"
-          name="imageUrl"
-          id="imageUrl"
-        />
-        <label htmlFor="cookingTime">Cooking Time</label>
-        <input
-          value={recipe.cookingTime}
-          onChange={handleChange}
-          type="number"
-          name="cookingTime"
-          id="cookingTime"
-        />
-        <button type="submit">Create Recipe</button>
-      </form>
+          <label htmlFor="instructions">Instructions</label>
+          <textarea
+            value={recipe.instructions}
+            onChange={handleChange}
+            type="text"
+            name="instructions"
+            id="instructions"
+          />
+          <label htmlFor="imageUrl">ImageURL</label>
+          <input
+            value={recipe.imageUrl}
+            onChange={handleChange}
+            type="text"
+            name="imageUrl"
+            id="imageUrl"
+          />
+          <label htmlFor="cookingTime">Cooking Time</label>
+          <input
+            value={recipe.cookingTime}
+            onChange={handleChange}
+            type="number"
+            name="cookingTime"
+            id="cookingTime"
+          />
+          <button type="submit">Create Recipe</button>
+        </form>
+      </div>
     </div>
   );
 };

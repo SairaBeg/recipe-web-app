@@ -43,7 +43,6 @@ ul {
 }
 
 li {
-  border: 8px solid var(--ltGreen);
   padding: 10px;
   margin-bottom: 10px;
 }
@@ -172,6 +171,7 @@ p {
   align-items: center;
   text-align: center;
   border-radius: 3%;
+  box-shadow: 2px 2px 1px 1px rgb(110, 109, 109);
 }
 .card-title {
   font-weight: bold;
@@ -227,25 +227,42 @@ p {
   font-weight: 400;
   font-size: 0.8em;
 }
+#cooking-time-label {
+  font-weight: 500;
+}
 /* .btn {
   background-color: aliceblue;
 } */
 
 /* Create Recipe */
-.create-recipe {
+#create-recipe-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.create-recipe-card {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 20px;
-  background-color: white;
-  border-radius: 5px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(
+    to right bottom,
+    var(--ltOrange),
+    var(--dkOrange)
+  );
+  border-radius: 10px;
+  box-shadow: 2px 2px rgb(158, 155, 155);
   margin: 20px;
   width: 400px;
 }
-.create-recipe form {
+.create-recipe-card form {
   display: flex;
   flex-direction: column;
+}
+#create-recipe-title {
+  font-size: 1.5em;
+  font-weight: 500;
 }
 /* Saved Recipes */

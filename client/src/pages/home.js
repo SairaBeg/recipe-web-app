@@ -123,7 +123,8 @@ export const Home = () => {
                 alt={recipe.name}
               />
               <p id="cooking-time">
-                Cooking Time: {recipe.cookingTime} (minutes)
+                <span id="cooking-time-label">Cooking Time: </span>
+                {recipe.cookingTime} (minutes)
               </p>
             </li>
           ))}
