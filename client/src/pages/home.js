@@ -111,6 +111,10 @@ export const Home = () => {
                 </button>
               </div>
               <div className="instructions-div">
+                <label id="instructions-label" for="instructions">
+                  Instructions:
+                </label>
+
                 <p className="instructions">{recipe.instructions}</p>
               </div>
               <img
@@ -118,7 +122,9 @@ export const Home = () => {
                 src={recipe.imageUrl}
                 alt={recipe.name}
               />
-              <p>Cooking Time: {recipe.cookingTime} (minutes)</p>
+              <p id="cooking-time">
+                Cooking Time: {recipe.cookingTime} (minutes)
+              </p>
             </li>
           ))}
         </ul>

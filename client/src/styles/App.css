@@ -57,7 +57,7 @@ img {
   height: auto;
   margin-bottom: 10px;
   width: 400px;
-  border: 2px solid var(--dkOrange);
+  border: 2px solid white;
 }
 
 p {
@@ -115,14 +115,14 @@ p {
   text-decoration: none;
 }
 .navbar-link:hover {
-  padding: 8px;
+  padding: 8px 15px;
   border-radius: 10px;
   border: white solid 2px;
 }
 .active {
-  padding: 8px;
+  padding: 8px 15px;
 
-  background-color: var(--ltGreen);
+  background: linear-gradient(to right top, var(--ltGreen), var(--dkGreen));
   border-radius: 10px;
   border: white solid 3px;
 }
@@ -140,18 +140,15 @@ p {
   align-items: center;
   background: linear-gradient(to right, var(--ltGreen), var(--dkGreen));
   border-radius: 15px;
-  margin-left: 5px;
-  margin-right: 5px;
+  margin-left: 1em;
+  margin-right: 1em;
 }
 .all-recipes-title h2 {
-  font-weight: 600;
+  font-weight: 650;
   margin-left: 20px;
   margin-bottom: 1px;
-
-  padding-left: 10px;
-  padding-right: 10px;
-  padding-bottom: 10px;
-  background-color: var(--dkOrange);
+  padding: 0px 1em 0.2em 1em;
+  background: linear-gradient(to right top, var(--ltOrange), var(--dkOrange));
   border-radius: 15px;
   border: white solid 2px;
 }
@@ -163,7 +160,11 @@ p {
 }
 /*Recipe Card */
 .recipe-card {
-  background: var(--ltOrange);
+  background: linear-gradient(
+    to right bottom,
+    var(--ltOrange),
+    var(--dkOrange)
+  );
   padding: 5%;
   display: flex;
   flex-direction: column;
@@ -174,7 +175,7 @@ p {
 }
 .card-title {
   font-weight: bold;
-  font-size: x-large;
+  font-size: 35px;
 
   order: 1;
 }
@@ -182,6 +183,7 @@ p {
   display: flex;
   justify-content: space-between;
   width: 100%; /* Add this line */
+  padding-bottom: 0.5em;
 }
 #save-button {
   order: 2;
@@ -198,15 +200,32 @@ p {
 }
 .instructions-div {
   display: flex;
+  flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
   width: 100%;
+  padding-bottom: 0.8em;
+}
+#instructions-label {
+  font-weight: 550;
+  padding-left: 0.2em;
+  font-size: 1.1em;
 }
 .instructions {
+  background-color: white;
+  border-radius: 10px;
+  width: 100%;
+  padding: 10px;
   text-align: left;
+  font-size: 1em;
+  font-weight: 450;
 }
 .card-image {
   max-width: 100%;
+}
+#cooking-time {
+  font-weight: 400;
+  font-size: 0.8em;
 }
 /* .btn {
   background-color: aliceblue;
