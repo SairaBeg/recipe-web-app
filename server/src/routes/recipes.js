@@ -15,7 +15,7 @@ router.get("/", async (req, res) => {
   }
 });
 //Create Recipe
-router.post("/", verifyToken, async (req, res) => {
+router.post("/", async (req, res) => {
   const recipe = new RecipeModel(req.body);
   try {
     const response = await recipe.save();
@@ -26,7 +26,7 @@ router.post("/", verifyToken, async (req, res) => {
 });
 
 //Save a recipe
-router.put("/", verifyToken, async (req, res) => {
+router.put("/", async (req, res) => {
   try {
     const recipe = await RecipeModel.findById(req.body.recipeID);
     const user = await UserModel.findById(req.body.userID);
@@ -39,7 +39,7 @@ router.put("/", verifyToken, async (req, res) => {
   }
 });
 //Delete Save a recipe
-router.delete("/", verifyToken, async (req, res) => {
+router.delete("/", async (req, res) => {
   try {
     const recipe = await RecipeModel.findById(req.body.recipeID);
     const user = await UserModel.findById(req.body.userID);

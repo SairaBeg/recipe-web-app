@@ -34,15 +34,22 @@ router.post("/login", async (req, res) => {
   }
 
   const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
+
   res.json({ token, userID: user._id });
 });
 
 export { router as userRouter };
 export const verifyToken = (req, res, next) => {
   const token = req.headers.authorization;
+  console.log("Received Token:", token);
+  const decodedToken = jwt.decode(token);
+  console.log("Decoded Token:", decodedToken);
   if (token) {
     jwt.verify(token, process.env.JWT_SECRET, (err) => {
-      if (err) return res.sendStatus(403);
+      if (err) {
+        console.error("JWT Verification Error:", err);
+        return res.status(403).json({ message: "Invalid token" });
+      }
       next();
     });
   } else {

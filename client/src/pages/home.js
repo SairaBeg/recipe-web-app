@@ -46,7 +46,11 @@ export const Home = () => {
           recipeID,
           userID,
         },
-        { headers: { authorization: cookies.access_token } }
+        {
+          headers: {
+            Authorization: `Bearer ${cookies.access_token}`,
+          },
+        }
       );
       setSavedRecipes(response.data.savedRecipes);
     } catch (e) {
@@ -63,7 +67,9 @@ export const Home = () => {
           recipeID,
           userID,
         },
-        headers: { authorization: cookies.access_token },
+        headers: {
+          Authorization: `Bearer ${cookies.access_token}`,
+        },
       });
 
       // Update savedRecipes state manually

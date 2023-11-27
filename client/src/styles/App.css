@@ -169,6 +169,15 @@ p {
 }
 #save-button {
   order: 2;
+  color: white;
+  background-color: var(--dkGreen);
+  padding: 2%;
+  border-radius: 7px;
+  border: white solid 1px;
+  box-shadow: 3px 3px rgb(85, 84, 84);
+}
+#save-button:hover {
+  background-color: #606c38;
 }
 .instructions-div {
   display: flex;
