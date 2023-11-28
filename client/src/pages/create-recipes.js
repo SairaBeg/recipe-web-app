@@ -10,7 +10,7 @@ export const CreateRecipe = () => {
   const [_, cookies] = useCookies(["access_token"]);
   const [recipe, setRecipe] = useState({
     name: "",
-    ingredients: [],
+    ingredients: [""],
     instructions: "",
     imageUrl: "",
     cookingTime: 0,
@@ -48,7 +48,9 @@ export const CreateRecipe = () => {
       <div className="create-recipe-card">
         <h2 id="create-recipe-title">Create Recipe</h2>
         <form onSubmit={onSubmit}>
-          <label htmlFor="name">Name</label>
+          <label className="form-label" htmlFor="name">
+            Name
+          </label>
           <input
             type="text"
             name="name"
@@ -56,29 +58,40 @@ export const CreateRecipe = () => {
             value={recipe.name}
             onChange={handleChange}
           />
-          <label htmlFor="description">Description</label>
+          <label className="form-label" htmlFor="description">
+            Description
+          </label>
           <textarea
             value={recipe.description}
             name="description"
             id="description"
             onChange={handleChange}
           />
-          <label htmlFor="ingredients">Ingredients</label>
+          <label className="form-label" htmlFor="ingredients">
+            Ingredients
+          </label>
           {recipe.ingredients.map((ingredient, index) => (
             <input
               key={index}
               type="text"
               name="ingredients"
-              id="ingredients"
+              className="ingredient-box"
+              id={`ingredient-${index}`}
               value={ingredient}
               onChange={(event) => handleIngredientChange(event, index)}
             />
           ))}
-          <button type="button" onClick={addIngredient}>
+          <button
+            id="add-ingredient-button"
+            type="button"
+            onClick={addIngredient}
+          >
             Add Ingredient
           </button>
 
-          <label htmlFor="instructions">Instructions</label>
+          <label className="form-label" htmlFor="instructions">
+            Instructions
+          </label>
           <textarea
             value={recipe.instructions}
             onChange={handleChange}
@@ -86,7 +99,9 @@ export const CreateRecipe = () => {
             name="instructions"
             id="instructions"
           />
-          <label htmlFor="imageUrl">ImageURL</label>
+          <label className="form-label" htmlFor="imageUrl">
+            ImageURL
+          </label>
           <input
             value={recipe.imageUrl}
             onChange={handleChange}
@@ -94,7 +109,9 @@ export const CreateRecipe = () => {
             name="imageUrl"
             id="imageUrl"
           />
-          <label htmlFor="cookingTime">Cooking Time</label>
+          <label className="form-label" htmlFor="cookingTime">
+            Cooking Time (Minutes)
+          </label>
           <input
             value={recipe.cookingTime}
             onChange={handleChange}
@@ -102,7 +119,9 @@ export const CreateRecipe = () => {
             name="cookingTime"
             id="cookingTime"
           />
-          <button type="submit">Create Recipe</button>
+          <button id="create-recipe-button" type="submit">
+            Create Recipe
+          </button>
         </form>
       </div>
     </div>
