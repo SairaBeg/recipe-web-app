@@ -21,25 +21,41 @@ export const SavedRecipes = () => {
     };
 
     fetchSavedRecipe();
-  });
+  }, []);
 
   return (
     <div>
-      <h2>Saved Recipes</h2>
-      <ul>
-        {savedRecipes.map((recipe) => (
-          <li key={recipe._id}>
-            <div>
-              <h2>{recipe.name}</h2>
-            </div>
-            <div className="instructions">
-              <p>{recipe.instructions}</p>
-              <img src={recipe.imageUrl} alt={recipe.name} />
-              <p>Cooking Time: {recipe.cookingTime} (minutes)</p>
-            </div>
-          </li>
-        ))}
-      </ul>
+      <div className="all-recipes-title">
+        <h2 className="all-recipes-title-h2">Saved Recipes</h2>
+      </div>
+      <div className="cardfeed">
+        <ul>
+          {savedRecipes.map((recipe) => (
+            <li className="recipe-card" key={recipe._id}>
+              <div className="title-button">
+                <h2 className="card-title">{recipe.name}</h2>
+              </div>
+              <div className="instructions-div">
+                <label id="instructions-label" htmlFor="instructions">
+                  Instructions:
+                </label>
+
+                <p className="instructions">{recipe.instructions}</p>
+              </div>
+              <img
+                className="card-image"
+                src={recipe.imageUrl}
+                alt={recipe.name}
+              />
+              <p id="cooking-time">
+                {" "}
+                <span id="cooking-time-label">Cooking Time: </span>{" "}
+                {recipe.cookingTime} (minutes)
+              </p>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 };

@@ -14,11 +14,11 @@ export const Navbar = () => {
   };
   return (
     <div className="navbar">
-      <NavLink activeClassName="active" className="navbar-link" to={"/"}>
+      <NavLink activeclassname="active" className="navbar-link" to={"/"}>
         Home
       </NavLink>
       <NavLink
-        activeClassName="active"
+        activeclassname="active"
         className="navbar-link"
         to={"/create-recipe"}
       >
@@ -26,13 +26,13 @@ export const Navbar = () => {
       </NavLink>
 
       {!cookies.access_token ? (
-        <NavLink activeClassName="active" className="navbar-link" to={"/auth"}>
+        <NavLink activeclassname="active" className="navbar-link" to={"/auth"}>
           Login/Register
         </NavLink>
       ) : (
         <>
           <NavLink
-            activeClassName="active"
+            activeclassname="active"
             className="navbar-link"
             to={"/saved-recipes"}
           >

@@ -111,7 +111,7 @@ export const Home = () => {
                 </button>
               </div>
               <div className="instructions-div">
-                <label id="instructions-label" for="instructions">
+                <label id="instructions-label" htmlFor="instructions">
                   Instructions:
                 </label>
 

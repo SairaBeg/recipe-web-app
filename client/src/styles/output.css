@@ -481,7 +481,8 @@ video {
 
 :root {
   --ltGreen: #606c38;
-  --dkGreen: #283618;
+  --dkGreen: #606c38;
+  --dkerGreen: #3d4524;
   --beige: #fefae0;
   --ltOrange: #dda15e;
   --dkOrange: #bc6c25;
@@ -597,13 +598,23 @@ p {
 }
 .active {
   padding: 8px 15px;
-
-  background: linear-gradient(to right top, var(--ltGreen), var(--dkGreen));
+  transition-duration: 0.2s;
+  background-color: var(--ltGreen);
+  border-radius: 10px;
+  border: white solid 3px;
+}
+.active:hover {
+  padding: 8px 15px;
+  background-color: var(--dkerGreen);
   border-radius: 10px;
   border: white solid 3px;
 }
 #logout-button {
   font-size: 25px;
+  transition-duration: 0.2s;
+}
+#logout-button:hover {
+  background-color: rgb(176, 75, 75);
 }
 
 /*Homepage*/
@@ -649,6 +660,7 @@ p {
   text-align: center;
   border-radius: 3%;
   box-shadow: 2px 2px 1px 1px rgb(110, 109, 109);
+  width: 30em;
 }
 .card-title {
   font-weight: bold;
@@ -673,7 +685,7 @@ p {
   transition-duration: 0.2s;
 }
 #save-button:hover {
-  background-color: #606c38;
+  background-color: var(--dkerGreen);
 }
 .instructions-div {
   display: flex;
@@ -696,6 +708,7 @@ p {
   text-align: left;
   font-size: 1em;
   font-weight: 450;
+  align-self: center;
 }
 .card-image {
   max-width: 100%;
@@ -707,9 +720,6 @@ p {
 #cooking-time-label {
   font-weight: 500;
 }
-/* .btn {
-  background-color: aliceblue;
-} */
 
 /* Create Recipe */
 #create-recipe-container {
@@ -721,9 +731,10 @@ p {
 .create-recipe-card {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  justify-content: space-between;
+
   padding: 20px;
+  margin: 20px;
   background: linear-gradient(
     to right bottom,
     var(--ltOrange),
@@ -731,15 +742,82 @@ p {
   );
   border-radius: 10px;
   box-shadow: 2px 2px rgb(158, 155, 155);
-  margin: 20px;
-  width: 400px;
+
+  width: 30em;
+  height: 45em;
+}
+#create-recipe-title {
+  font-size: 1.8em;
+  font-weight: 700;
+  margin-top: 0.1em;
+  padding-bottom: 0.5em;
 }
 .create-recipe-card form {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+
+  margin-bottom: 4em;
 }
-#create-recipe-title {
-  font-size: 1.5em;
-  font-weight: 500;
+.form-label {
+  padding: 0.1em;
+  padding-top: 0.4em;
+  margin-top: 0.1em;
+}
+#name {
+  padding: 0.7em;
+  border-radius: 10px;
+}
+#description {
+  padding: 0.4em;
+  border-radius: 10px;
+}
+.ingredient-box {
+  padding: 0.2em;
+  margin: 0.1em;
+  border: black solid 1.5px;
+}
+#add-ingredient-button {
+  color: white;
+  background-color: var(--dkGreen);
+  padding: 2%;
+  border-radius: 7px;
+  border: white solid 1px;
+  box-shadow: 3px 3px rgb(85, 84, 84);
+  transition-duration: 0.2s;
+  width: 40%;
+  align-self: center;
+  margin-top: 2%;
+}
+#add-ingredient-button:hover {
+  background-color: var(--dkerGreen);
+}
+#instructions {
+  border-radius: 10px;
+  padding: 1%;
+}
+#imageUrl {
+  border-radius: 10px;
+  padding: 2%;
+}
+#cookingTime {
+  padding: 1%;
+  border-radius: 10px;
+}
+#create-recipe-button {
+  color: white;
+  background-color: var(--dkGreen);
+  padding: 2%;
+  border-radius: 7px;
+  border: white solid 1px;
+  box-shadow: 3px 3px rgb(85, 84, 84);
+  transition-duration: 0.2s;
+  width: 40%;
+  align-self: center;
+  margin-top: 4%;
+  margin-bottom: 2%;
+}
+#create-recipe-button:hover {
+  background-color: var(--dkerGreen);
 }
 /* Saved Recipes */

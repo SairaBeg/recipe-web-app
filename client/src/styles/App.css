@@ -134,6 +134,10 @@ p {
 }
 #logout-button {
   font-size: 25px;
+  transition-duration: 0.2s;
+}
+#logout-button:hover {
+  background-color: rgb(176, 75, 75);
 }
 
 /*Homepage*/
