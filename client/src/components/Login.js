@@ -38,10 +38,11 @@ const Form = ({ username, setUsername, password, setPassword, onSubmit }) => {
   return (
     <div className="auth-container">
       <form onSubmit={onSubmit}>
-        <h2>Login</h2>
+        <h2 className="auth-title">Login</h2>
         <div className="form-group">
           <label htmlFor="username">Username: </label>
           <input
+            className="auth-input"
             type="text"
             id="username"
             value={username}
@@ -51,13 +52,16 @@ const Form = ({ username, setUsername, password, setPassword, onSubmit }) => {
         <div className="form-group">
           <label htmlFor="password">Password: </label>
           <input
+            className="auth-input"
             type="text"
             id="password"
             value={password}
             onChange={(event) => setPassword(event.target.value)}
           />
         </div>
-        <button type="submit">Login</button>
+        <button id="login-button" type="submit">
+          Login
+        </button>
       </form>
     </div>
   );
