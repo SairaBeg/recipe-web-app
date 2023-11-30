@@ -38,7 +38,7 @@ router.put("/", async (req, res) => {
     res.json(e);
   }
 });
-//Delete Save a recipe
+//Delete a saved recipe
 router.delete("/", async (req, res) => {
   try {
     const recipe = await RecipeModel.findById(req.body.recipeID);
@@ -56,7 +56,7 @@ router.delete("/", async (req, res) => {
     res.json(e);
   }
 });
-//Get ID of Saved Recipes
+//Get IDs of a user's Saved Recipes
 router.get("/savedRecipes/ids/:userID", async (req, res) => {
   try {
     const user = await UserModel.findById(req.params.userID);

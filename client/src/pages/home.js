@@ -27,7 +27,7 @@ export const Home = () => {
         const response = await axios.get(
           `http://localhost:3001/recipes/savedRecipes/ids/${userID}`
         );
-
+        console.log("Saved Recipes:", response.data.savedRecipes);
         setSavedRecipes(response.data.savedRecipes);
       } catch (e) {
         console.error(e);
@@ -35,8 +35,14 @@ export const Home = () => {
     };
 
     fetchRecipe();
-    if (cookies.access_token) fetchSavedRecipe();
-  }, [userID, cookies.access_token]);
+    //   if (cookies.access_token) fetchSavedRecipe();
+    // }, [userID, cookies.access_token]);
+    fetchSavedRecipe();
+  }, [userID]);
+
+  useEffect(() => {
+    console.log("Updated Saved Recipes:", savedRecipes);
+  }, [savedRecipes]);
   //Save Recipe call
   const saveRecipe = async (recipeID) => {
     try {
@@ -52,12 +58,15 @@ export const Home = () => {
           },
         }
       );
-      setSavedRecipes(response.data.savedRecipes);
+      setSavedRecipes((prevSavedRecipes) => [
+        ...prevSavedRecipes,
+        recipeID, // Append the new recipe ID
+      ]);
     } catch (e) {
       console.error(e);
     }
   };
-  const isRecipeSaved = (id) => savedRecipes?.includes(id);
+  const isRecipeSaved = (id) => savedRecipes.includes(id);
 
   //Remove Saved Recipe Call
   const unSaveRecipe = async (recipeID) => {
@@ -73,7 +82,9 @@ export const Home = () => {
       });
 
       // Update savedRecipes state manually
-      setSavedRecipes(savedRecipes.filter((id) => id !== recipeID));
+      setSavedRecipes((prevSavedRecipes) =>
+        prevSavedRecipes.filter((id) => id !== recipeID)
+      );
     } catch (e) {
       console.error(e);
     }
@@ -90,25 +101,34 @@ export const Home = () => {
             <li className="recipe-card" key={recipe._id}>
               <div className="title-button">
                 <h2 className="card-title">{recipe.name}</h2>
-                {/* <button
-                onClick={() => saveRecipe(recipe._id)}
-                disabled={isRecipeSaved(recipe._id)}
-              >
-                {isRecipeSaved(recipe._id) ? "Saved" : "Save Recipe"}
-              </button> */}
-                <button
-                  id="save-button"
-                  className="btn"
-                  onClick={() => {
-                    if (isRecipeSaved(recipe._id)) {
-                      unSaveRecipe(recipe._id);
-                    } else {
-                      saveRecipe(recipe._id);
-                    }
-                  }}
-                >
-                  {isRecipeSaved(recipe._id) ? "Unsave Recipe" : "Save Recipe"}
-                </button>
+
+                {savedRecipes && (
+                  <button
+                    id="save-button"
+                    className="btn"
+                    onClick={() => {
+                      console.log("Before click Saved Recipes:", savedRecipes);
+                      console.log(
+                        "Before click is Recipe Saved?",
+                        isRecipeSaved(recipe._id)
+                      );
+                      if (isRecipeSaved(recipe._id)) {
+                        unSaveRecipe(recipe._id);
+                      } else {
+                        saveRecipe(recipe._id);
+                      }
+                      console.log("After click Saved Recipes:", savedRecipes);
+                      console.log(
+                        "after click Is Recipe Saved?",
+                        isRecipeSaved(recipe._id)
+                      );
+                    }}
+                  >
+                    {isRecipeSaved(recipe._id)
+                      ? "Unsave Recipe"
+                      : "Save Recipe"}
+                  </button>
+                )}
               </div>
               <div className="instructions-div">
                 <label id="instructions-label" htmlFor="instructions">

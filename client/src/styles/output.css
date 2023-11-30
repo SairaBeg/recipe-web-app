@@ -556,7 +556,7 @@ p {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #f2f2f2;
+  background-color: var(--beige);
 }
 
 .auth-container {
@@ -565,13 +565,51 @@ p {
   justify-content: center;
   align-items: center;
   padding: 20px;
-  background-color: white;
-  border-radius: 5px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(
+    to right bottom,
+    var(--ltOrange),
+    var(--dkOrange)
+  );
+  border-radius: 10px;
+  box-shadow: 2px 2px 1px 1px rgb(110, 109, 109);
   margin: 20px;
   width: 400px;
 }
-
+.auth-title {
+  font-weight: 500;
+  font-size: 2em;
+  padding-bottom: 0.5em;
+}
+#login-button {
+  color: white;
+  background-color: var(--dkGreen);
+  padding: 3%;
+  width: 5em;
+  border-radius: 7px;
+  border: white solid 1px;
+  box-shadow: 3px 3px rgb(85, 84, 84);
+  transition-duration: 0.2s;
+}
+#login-button:hover {
+  background-color: var(--dkerGreen);
+}
+#register-button {
+  color: white;
+  background-color: var(--dkGreen);
+  padding: 3%;
+  width: 5em;
+  border-radius: 7px;
+  border: white solid 1px;
+  box-shadow: 3px 3px rgb(85, 84, 84);
+  transition-duration: 0.2s;
+}
+#register-button:hover {
+  background-color: var(--dkerGreen);
+}
+.auth-input {
+  padding: 0.5em;
+  border-radius: 10px;
+}
 .form-group {
   display: flex;
   flex-direction: column;
