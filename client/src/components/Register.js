@@ -8,7 +8,8 @@ export const Register = () => {
   const onSubmit = async (event) => {
     event.preventDefault();
     try {
-      await axios.post("http://localhost:3001/auth/register", {
+      // await axios.post("http://localhost:3001/auth/register", {
+      await axios.post("https://recipe-api-okz1.onrender.com/auth/register", {
         username,
         password,
       });

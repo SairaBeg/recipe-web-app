@@ -23,4 +23,5 @@ mongoose.connect(
   `mongodb+srv://sairabegdev:${password}@recipes.sci6put.mongodb.net/recipes?retryWrites=true&w=majority`
 );
 
-app.listen(3001, () => console.log("Server started @PORT 3001"));
+// app.listen(3001, () => console.log("Server started @PORT 3001"));
+app.listen(() => console.log("Server started"));
