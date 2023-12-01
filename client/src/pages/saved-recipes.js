@@ -4,7 +4,6 @@ import { useGetUserID } from "../hooks/useGetUserID";
 
 export const SavedRecipes = () => {
   const [savedRecipes, setSavedRecipes] = useState([]);
-
   const userID = useGetUserID();
 
   useEffect(() => {
@@ -19,7 +18,6 @@ export const SavedRecipes = () => {
         console.error(e);
       }
     };
-
     fetchSavedRecipe();
   }, []);
 
@@ -39,7 +37,6 @@ export const SavedRecipes = () => {
                 <label id="instructions-label" htmlFor="instructions">
                   Instructions:
                 </label>
-
                 <p className="instructions">{recipe.instructions}</p>
               </div>
               <img

@@ -5,6 +5,7 @@ import express from "express";
 import { verifyToken } from "./users.js";
 
 const router = express.Router();
+
 //Get Recipes
 router.get("/", async (req, res) => {
   try {
@@ -14,6 +15,7 @@ router.get("/", async (req, res) => {
     res.json(e);
   }
 });
+
 //Create Recipe
 router.post("/", async (req, res) => {
   const recipe = new RecipeModel(req.body);
@@ -38,12 +40,12 @@ router.put("/", async (req, res) => {
     res.json(e);
   }
 });
+
 //Delete a saved recipe
 router.delete("/", async (req, res) => {
   try {
     const recipe = await RecipeModel.findById(req.body.recipeID);
     const user = await UserModel.findById(req.body.userID);
-
     user.savedRecipes.pull(recipe._id);
     await user.save();
 
@@ -56,6 +58,7 @@ router.delete("/", async (req, res) => {
     res.json(e);
   }
 });
+
 //Get IDs of a user's Saved Recipes
 router.get("/savedRecipes/ids/:userID", async (req, res) => {
   try {
@@ -65,6 +68,7 @@ router.get("/savedRecipes/ids/:userID", async (req, res) => {
     res.json(e);
   }
 });
+
 //Get a user's Saved Recipes
 router.get("/savedRecipes/:userID", async (req, res) => {
   try {

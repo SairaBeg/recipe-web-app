@@ -5,7 +5,6 @@ import { UserModel } from "../models/Users.js";
 import dotenv from "dotenv";
 
 dotenv.config({ path: "./.env" });
-
 const router = express.Router();
 
 router.post("/register", async (req, res) => {
@@ -34,11 +33,11 @@ router.post("/login", async (req, res) => {
   }
 
   const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
-
   res.json({ token, userID: user._id });
 });
 
 export { router as userRouter };
+
 export const verifyToken = (req, res, next) => {
   const token = req.headers.authorization;
   console.log("Received Token:", token);

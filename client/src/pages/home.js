@@ -6,34 +6,32 @@ import { useCookies } from "react-cookie";
 export const Home = () => {
   const [recipes, setRecipes] = useState([]);
   const [savedRecipes, setSavedRecipes] = useState([]);
-
   const [_, cookies] = useCookies(["access_token"]);
 
   const userID = useGetUserID();
 
+  //Fetch all recipes in the database for the homepage
   useEffect(() => {
     const fetchRecipe = async () => {
       try {
         const response = await axios.get("http://localhost:3001/recipes");
-
         setRecipes(response.data);
       } catch (e) {
         console.error(e);
       }
     };
-
+    //Informs the Saved Recipes button if a user has a recipe saved or not. The button appears as "Unsave Recipe" if it is already saved, "Save Recipe" if not.
     const fetchSavedRecipe = async () => {
       try {
         const response = await axios.get(
           `http://localhost:3001/recipes/savedRecipes/ids/${userID}`
         );
-        console.log("Saved Recipes:", response.data.savedRecipes);
+        // console.log("Saved Recipes:", response.data.savedRecipes);
         setSavedRecipes(response.data.savedRecipes);
       } catch (e) {
         console.error(e);
       }
     };
-
     fetchRecipe();
     //   if (cookies.access_token) fetchSavedRecipe();
     // }, [userID, cookies.access_token]);
@@ -43,7 +41,8 @@ export const Home = () => {
   useEffect(() => {
     console.log("Updated Saved Recipes:", savedRecipes);
   }, [savedRecipes]);
-  //Save Recipe call
+
+  //Save Recipe a recipe to the server
   const saveRecipe = async (recipeID) => {
     try {
       const response = await axios.put(
@@ -68,7 +67,7 @@ export const Home = () => {
   };
   const isRecipeSaved = (id) => savedRecipes.includes(id);
 
-  //Remove Saved Recipe Call
+  //Remove Saved Recipe
   const unSaveRecipe = async (recipeID) => {
     try {
       await axios.delete("http://localhost:3001/recipes", {

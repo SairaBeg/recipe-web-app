@@ -21,15 +21,18 @@ export const CreateRecipe = () => {
     const { name, value } = event.target;
     setRecipe({ ...recipe, [name]: value });
   };
+
   const handleIngredientChange = (event, idx) => {
     const { value } = event.target;
     const ingredients = recipe.ingredients;
     ingredients[idx] = value;
     setRecipe({ ...recipe, ingredients });
   };
+
   const addIngredient = () => {
     setRecipe({ ...recipe, ingredients: [...recipe.ingredients, ""] });
   };
+
   const onSubmit = async (event) => {
     event.preventDefault();
     try {
@@ -88,7 +91,6 @@ export const CreateRecipe = () => {
           >
             Add Ingredient
           </button>
-
           <label className="form-label" htmlFor="instructions">
             Instructions
           </label>
