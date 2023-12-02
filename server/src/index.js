@@ -15,8 +15,9 @@ app.use(express.json());
 app.use(
   cors({
     origin: ["https://recipe-web-app-eosin.vercel.app"],
-    methods: ["POST", "GET"],
+    methods: ["GET", "HEAD", "POST", "PUT", "DELETE"],
     credentials: true,
+    optionsSuccessStatus: 204,
   })
 );
 
