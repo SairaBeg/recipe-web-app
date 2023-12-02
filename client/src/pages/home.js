@@ -15,9 +15,7 @@ export const Home = () => {
     const fetchRecipe = async () => {
       try {
         // const response = await axios.get("http://localhost:3001/recipes");
-        const response = await axios.get(
-          "https://recipe-web-app-api.vercel.app/recipes"
-        );
+        const response = await axios.get("/recipes");
 
         setRecipes(response.data);
       } catch (e) {
@@ -30,9 +28,7 @@ export const Home = () => {
         // const response = await axios.get(
         //   `http://localhost:3001/recipes/savedRecipes/ids/${userID}`
         // );
-        const response = await axios.get(
-          `https://recipe-web-app-api.vercel.app/recipes/savedRecipes/ids/${userID}`
-        );
+        const response = await axios.get(`/recipes/savedRecipes/ids/${userID}`);
         // console.log("Saved Recipes:", response.data.savedRecipes);
         setSavedRecipes(response.data.savedRecipes);
       } catch (e) {
@@ -55,7 +51,7 @@ export const Home = () => {
       // const response = await axios.put(
       //   "http://localhost:3001/recipes",
       const response = await axios.put(
-        "https://recipe-web-app-api.vercel.app/recipes",
+        "/recipes",
         {
           recipeID,
           userID,
@@ -80,7 +76,7 @@ export const Home = () => {
   const unSaveRecipe = async (recipeID) => {
     try {
       // await axios.delete("http://localhost:3001/recipes", {
-      await axios.delete("https://recipe-web-app-api.vercel.app/recipes", {
+      await axios.delete("/recipes", {
         data: {
           recipeID,
           userID,

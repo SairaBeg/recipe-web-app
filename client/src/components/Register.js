@@ -9,7 +9,7 @@ export const Register = () => {
     event.preventDefault();
     try {
       // await axios.post("http://localhost:3001/auth/register", {
-      await axios.post("https://recipe-web-app-api.vercel.app/auth/register", {
+      await axios.post("/auth/register", {
         username,
         password,
       });

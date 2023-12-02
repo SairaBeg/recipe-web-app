@@ -27,7 +27,8 @@ app.use("/recipes", recipesRouter);
 const password = process.env.MONGODB_PW;
 
 mongoose.connect(
-  `mongodb+srv://sairabegdev:${password}@recipes.sci6put.mongodb.net/recipes?retryWrites=true&w=majority`
+  `mongodb+srv://sairabegdev:${password}@recipes.sci6put.mongodb.net/recipes?retryWrites=true&w=majority`,
+  { useNewUrlParser: true, useUnifiedTopology: true }
 );
 
 // app.listen(3001, () => console.log("Server started @PORT 3001"));
