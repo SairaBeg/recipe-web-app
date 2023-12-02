@@ -23,6 +23,16 @@ app.use(
 
 app.options("*", cors());
 
+app.use("/recipes", (req, res, next) => {
+  res.header(
+    "Access-Control-Allow-Origin",
+    "https://recipe-web-app-eosin.vercel.app"
+  );
+  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+  res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  next();
+});
+
 app.use("/auth", userRouter);
 app.use("/recipes", recipesRouter);
 
