@@ -16,8 +16,13 @@ export const Home = () => {
       try {
         // const response = await axios.get("http://localhost:3001/recipes");
         const response = await axios.get("/recipes");
-
-        setRecipes(response.data);
+        const recipesData = response.data;
+        // Check if recipesData is an array before setting it in the state
+        if (Array.isArray(recipesData)) {
+          setRecipes(recipesData);
+        } else {
+          console.error("Invalid response format for recipes:", recipesData);
+        }
       } catch (e) {
         console.error(e);
       }
