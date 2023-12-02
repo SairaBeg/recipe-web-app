@@ -9,7 +9,7 @@ dotenv.config();
 
 // generates a version of our api
 const app = express();
-const cors = require("cors");
+
 // middleware that converts data sent from the front-end into json
 app.use(express.json());
 app.use(
@@ -20,15 +20,6 @@ app.use(
     optionsSuccessStatus: 204,
   })
 );
-
-app.options("*", cors());
-
-app.use("/recipes", (req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
-  res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
-  next();
-});
 
 app.use("/auth", userRouter);
 app.use("/recipes", recipesRouter);
