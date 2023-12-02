@@ -20,6 +20,8 @@ app.use(
   })
 );
 
+app.options("*", cors());
+
 app.use("/auth", userRouter);
 app.use("/recipes", recipesRouter);
 
