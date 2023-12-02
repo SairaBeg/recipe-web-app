@@ -14,7 +14,7 @@ const app = express();
 app.use(express.json());
 app.use(
   cors({
-    origin: ["https://recipe-web-app-api.vercel.app"],
+    origin: ["https://recipe-web-app-eosin.vercel.app"],
     methods: ["POST", "GET"],
     credentials: true,
   })
