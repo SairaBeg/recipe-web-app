@@ -12,7 +12,13 @@ const app = express();
 
 // middleware that converts data sent from the front-end into json
 app.use(express.json());
-app.use(cors());
+app.use(
+  cors({
+    origin: ["https://recipe-web-app-api.vercel.app"],
+    methods: ["POST", "GET"],
+    credentials: true,
+  })
+);
 
 app.use("/auth", userRouter);
 app.use("/recipes", recipesRouter);

@@ -16,7 +16,7 @@ export const Home = () => {
       try {
         // const response = await axios.get("http://localhost:3001/recipes");
         const response = await axios.get(
-          "https://recipe-api-okz1.onrender.com/recipes"
+          "https://recipe-web-app-api.vercel.app/recipes"
         );
 
         setRecipes(response.data);
@@ -31,7 +31,7 @@ export const Home = () => {
         //   `http://localhost:3001/recipes/savedRecipes/ids/${userID}`
         // );
         const response = await axios.get(
-          `https://recipe-api-okz1.onrender.com/recipes/savedRecipes/ids/${userID}`
+          `https://recipe-web-app-api.vercel.app/recipes/savedRecipes/ids/${userID}`
         );
         // console.log("Saved Recipes:", response.data.savedRecipes);
         setSavedRecipes(response.data.savedRecipes);
@@ -55,7 +55,7 @@ export const Home = () => {
       // const response = await axios.put(
       //   "http://localhost:3001/recipes",
       const response = await axios.put(
-        "https://recipe-api-okz1.onrender.com/recipes",
+        "https://recipe-web-app-api.vercel.app/recipes",
         {
           recipeID,
           userID,
@@ -80,7 +80,7 @@ export const Home = () => {
   const unSaveRecipe = async (recipeID) => {
     try {
       // await axios.delete("http://localhost:3001/recipes", {
-      await axios.delete("https://recipe-api-okz1.onrender.com/recipes", {
+      await axios.delete("https://recipe-web-app-api.vercel.app/recipes", {
         data: {
           recipeID,
           userID,

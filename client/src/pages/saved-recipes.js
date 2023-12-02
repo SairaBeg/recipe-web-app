@@ -11,7 +11,7 @@ export const SavedRecipes = () => {
       try {
         const response = await axios.get(
           // `http://localhost:3001/recipes/savedRecipes/${userID}`
-          `https://recipe-api-okz1.onrender.com/recipes/savedRecipes/${userID}`
+          `https://recipe-web-app-api.vercel.app/recipes/savedRecipes/${userID}`
         );
 
         setSavedRecipes(response.data.savedRecipes);

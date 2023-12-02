@@ -37,9 +37,13 @@ export const CreateRecipe = () => {
     event.preventDefault();
     try {
       // await axios.post("http://localhost:3001/recipes", recipe, {
-      await axios.post("https://recipe-api-okz1.onrender.com/recipes", recipe, {
-        headers: { authorization: cookies.access_token },
-      });
+      await axios.post(
+        "https://recipe-web-app-api.vercel.app/recipes",
+        recipe,
+        {
+          headers: { authorization: cookies.access_token },
+        }
+      );
       alert("Recipe Created!");
       navigate("/");
     } catch (e) {
